@@ -2,11 +2,11 @@
 
 __Note__
 
-This repository is a fork of the original __TextCrypt__ project by Chris Wood (see: __AESTextCrypt - Version 1.1__).  
-The new branch `1.2` add functions to load and store into txt file.  
-Enhancements for some Graphics have been carried out in this repository.  
-The "lighter package" __BouncyCastle__ is provided to create a very lightweight JAR file. 
-All class files (only 66 files) are inside the `bin` directory.
+This repository is a fork of the Chris Wood's original __TextCrypt__ project (see: __AESTextCrypt - Version 1.1__).  
+The new `1.2` branch adds functions to loading and saving data to a txt file.  
+Graphical improvements have been carried out with this repository.  
+The "lighweight" __BouncyCastle__ package is provided to generate a smaller JAR file. 
+All class files (only 66 files) are located in the `bin` directory.
 
 Please __Read__ the [doc.txt](./doc.txt) for more information about this software (original author: __Chris Wood__).
 
