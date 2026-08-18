@@ -2,18 +2,20 @@
 
 __Note__
 
-This repository is a fork of the Chris Wood's original __TextCrypt__ project (see: __AESTextCrypt - Version 1.1__).  
-The new `1.2` branch adds functions to loading and saving data to a txt file.  
-Graphical improvements have been carried out with this repository.  
-The "lighweight" __BouncyCastle__ package is provided to generate a smaller JAR file. 
-All class files (only 66 files) are located in the `bin` directory.
+This repository is a fork of the Chris Wood's original __TextCrypt__ project (see: [AESTextCrypt - Version 1.1](https://github.com/enorman1/AESTextCrypt_v1.1)).  
+Original repository is on SOURCEFORGE [homepage](https://sourceforge.net/projects/textcrypt/).  
+The new `1.2` branch (and above) adds functions to loading and saving data to a txt file.  
+Graphical improvements have also been carried out with this repository.  
+The "lightweight" __BouncyCastle__ package is provided to generate a smaller JAR file. 
+All Java class files are located in the `bin` directory.
 
-Please __Read__ the [doc.txt](./doc.txt) for more information about this software (original author: __Chris Wood__).
+Please __Read__ the [history.txt](./history.txt) for more informations about the current version and older.  
+Please __Read__ the [doc.txt](./doc.txt) for more informations about this software (original author: __Chris Wood__).  
+The license informations are given into [legal.txt](./legal.txt) file.
 
+__Authors__: Eric Normandin (2026) - Chris Wood (2013-2014)  
 
 ![window_screenshot](./TextCrypt.png)
-
-__Authors__: Chris Wood (2014) - Eric Normandin (2026)  
 
 ## Files source tree
 
@@ -24,8 +26,14 @@ TextCrypt/
 |-- resources/
 |   \-- file_locked.png
 |-- bin/
-|   \-- bouncycastle/
-|       \-- ...
+|   |-- com/
+|   |   \-- ceperman/
+|   |       \-- ...
+|   \-- org/
+|       |-- mindrot/
+|       |   \-- ...
+|       \-- bouncycastle/
+|           \-- ...
 |-- src/
 |   |-- com/
 |   |   \-- ceperman/
@@ -48,6 +56,13 @@ TextCrypt/
 
 ```
 
+## Requirements to compile source code
+
+* Java Runtime Environment (JRE) 8 or later  
+  with Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files  
+* The Bouncy Castle Crypto library (a lightweight version included - with only needed classes).  
+  __Unzip__ the package included on the `bin` directory.
+
 ## Compiling the source code
 
 ```bash
@@ -66,7 +81,7 @@ java -cp "bin/:resources/" com.ceperman.textcrypt.TextCrypt
 ## Creating the `TextCrypt.jar` file
 
 ```bash
-jar cvfm TextCrypt.jar META-INF/MANIFEST_old.MF -C bin/ . -C resources/ .
+jar cvfm TextCrypt.jar META-INF/MANIFEST.MF -C bin/ . -C resources/ .
 ```
 
 ***
