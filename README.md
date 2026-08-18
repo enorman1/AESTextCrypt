@@ -71,6 +71,8 @@ javac -cp "bin/" -d bin src/com/ceperman/textcrypt/*.java src/org/mindrot/jbcryp
 ## How to execute the "TextCrypt.class"
 
 ```bash
+cp src/com/ceperman/textcrypt/messages.properties bin/com/ceperman/textcrypt/messages.properties
+cp src/com/ceperman/textcrypt/version.properties bin/com/ceperman/textcrypt/version.properties
 java -cp "bin/:resources/" com.ceperman.textcrypt.TextCrypt
 ```
 \|
