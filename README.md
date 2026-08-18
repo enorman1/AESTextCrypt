@@ -3,7 +3,6 @@
 __Note__
 
 This repository is a fork of the Chris Wood's original __TextCrypt__ project (see: [AESTextCrypt - Version 1.1](https://github.com/enorman1/AESTextCrypt_v1.1)).  
-Original repository is on SOURCEFORGE [homepage](https://sourceforge.net/projects/textcrypt/).  
 The new `1.2` branch (and above) adds functions to loading and saving data to a txt file.  
 Graphical improvements have also been carried out with this repository.  
 The "lightweight" __BouncyCastle__ package is provided to generate a smaller JAR file. 
