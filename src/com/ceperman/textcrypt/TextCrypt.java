@@ -528,6 +528,11 @@ public class TextCrypt extends JFrame implements ActionListener {
 	btnSave.addActionListener(new ActionListener() {
 	@Override
 		public void actionPerformed(ActionEvent arg0) {
+			if (fieldText.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Text is empty! Nothing to save...",
+					"Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			//Create a file chooser
 			JFileChooser fileChooser = new JFileChooser(){
 				@Override
