@@ -1,4 +1,4 @@
-# AESTextCrypt - Version 1.2
+# AESTextCrypt
 
 __Note__
 
