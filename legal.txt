@@ -2,8 +2,6 @@ AesTextCrypt
 ------------
 
  * Copyright 2026 Eric Normandin
- * (added functions to read and write a txt file)
- * (improve some graphic user interface comportement: icon has been loaded, correct checkbox clicked zone, etc.) 
  * 
  * Copyright 2013-2014 Chris Wood
  *
