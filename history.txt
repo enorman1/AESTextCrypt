@@ -1,22 +1,29 @@
 Version history
 
-1.2   2026-07-27 (author: Eric Normandin)
-* Improve functionality of the "Encrypt" and "Decrypt" buttons:
-  - double encryption is now prevented.
-* Improve some graphic user interface comportement:
-  - icon has been loaded;
-  - correct checkbox clicked zone.
-* Add "Open" and "Save to File" options via a dialog box.
-  (functions added to read and write a txt file)
-* A 'fat JAR' with lightweight Bouncy Castle library (bcprov-jdk15on-149.jar)
-  Only 66 files included into '/bin/org/bouncycastle/' directory.
-  This reduction results in a final JAR file of 141 kB, compared to 2.4 MB for version 1.1.
+1.3   2026-08-18 (author: Eric Normandin)
+	* Major update with the library Bouncy Castle Provider 1.85 for JDK 1.8.
+	  The new "bcprov-jdk18on-1.85.jar" is used.
+	  The 'fat JAR' contains only files necessary with a 'slim' Bouncy Castle library.
+	  Only 135 files included into '/bin/org/bouncycastle/' directory.
+	  Whereas, the original "bcprov-jdk18on-1.85.jar" contains 7217 files (with 10.4 MB)!!!
+	  This reduction results in a final JAR file of 226 kB.
 
+1.2   2026-07-27 (author: Eric Normandin)
+	* Improve functionality of the "Encrypt" and "Decrypt" buttons:
+	  - double encryption is now prevented.
+	* Improve some graphic user interface comportement:
+	  - icon has been loaded;
+	  - correct checkbox clicked zone.
+	* Add "Open" and "Save to File" options via a dialog box.
+	  (functions added to read and write a txt file)
+	* A 'fat JAR' with lightweight Bouncy Castle library (bcprov-jdk15on-1.49.jar)
+	  Only 48 files included into '/bin/org/bouncycastle/' directory.
+	  This reduction results in a final JAR file of 141 kB, compared to 2.4 MB for version 1.1.
 
 1.1   2014-04-28 (author: Chris Wood)
-* Bug fix: reduced key used when not necessary
-* Removed unnecessary debug message
-* Removed version of jar without crypto function jar - not needed
+	* Bug fix: reduced key used when not necessary
+	* Removed unnecessary debug message
+	* Removed version of jar without crypto function jar - not needed
 
 1.0   2013-09-17 (author: Chris Wood)
-* Initial release
+	* Initial release

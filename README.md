@@ -14,7 +14,7 @@ The license informations are given into [legal.txt](./legal.txt) file.
 
 __Authors__: Eric Normandin (2026) - Chris Wood (2013-2014)  
 
-![window_screenshot](./TextCrypt.png)
+![window_screenshot](./AESTextCrypt.png)
 
 ## Files source tree
 
@@ -79,10 +79,10 @@ java -cp "bin/:resources/" com.ceperman.textcrypt.TextCrypt
 \| __Note__: On Windows, replace `:` with `;` in the classpath.
 \|
 
-## Creating the `TextCrypt.jar` file
+## Creating the `AESTextCrypt.jar` file
 
 ```bash
-jar cvfm TextCrypt.jar META-INF/MANIFEST.MF -C bin/ . -C resources/ .
+jar cvfm AESTextCrypt.jar META-INF/MANIFEST.MF -C bin/ . -C resources/ .
 ```
 
 ***

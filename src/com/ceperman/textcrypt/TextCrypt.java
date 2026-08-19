@@ -1,5 +1,7 @@
-/**
- * Copyright 2013 Chris Wood
+/*
+ * Copyright: 
+ *   2026      Eric Normandin
+ *   2013-2014 Chris Wood
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,6 +72,7 @@ import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.security.Security;
 
 import com.ceperman.textcrypt.CryptUtils.CipherInfo;
 
@@ -79,7 +82,7 @@ import com.ceperman.textcrypt.CryptUtils.CipherInfo;
  * automatically to take ~0.9 sec on the encrypting computer.
  * @author Chris Wood
  */
-@SuppressWarnings({ "javadoc", "serial" })
+//@SuppressWarnings({ "javadoc", "serial" })
 public class TextCrypt extends JFrame implements ActionListener {
 	
 	// to know the state of the content of the fieldText
@@ -110,10 +113,8 @@ public class TextCrypt extends JFrame implements ActionListener {
 	private int maxKeyLength;
 	private int keyLength;
 	
-	private static String AppVersion = "0.0";
-	
+	private static String AppVersion = "";
 	private static Image icon = null;
-	
 	
 	private class UndoMemory {
 		// Private variables to encapsulate the data
@@ -158,68 +159,54 @@ public class TextCrypt extends JFrame implements ActionListener {
 	}
 	private UndoMemory Undo = new UndoMemory();
 
-
-
-	/**
-	* Launch the application
-	*/
+	/*
+	 * Launch the application
+	 */
 	public static void main(String[] args) {
-	  EventQueue.invokeLater(new Runnable() {
-		 public void run() {
-			ClassLoader classLoader = TextCrypt.class.getClassLoader();
-			try (InputStream is = TextCrypt.class.getResourceAsStream("version.properties")) {
-				//if (is == null) {
-				//	System.out.println("Resource not found!");
-				//	return;
-				//}
-				if (is != null) {
-					// Use the input stream (e.g., read properties)
-					java.util.Properties props = new java.util.Properties();
-					props.load(is);
-					AppVersion = props.getProperty("version");
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			
-			try {
-				TextCrypt frame = new TextCrypt();
-				frame.pack();
-				frame.setMinimumSize(frame.getPreferredSize());
-				
-				// centre the window
-				//Dimension maxWindow = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds()
-				//            .getSize();
-				frame.setSize(500, 600);
-				//frame.setLocation(maxWindow.width / 2 - frame.getWidth() / 2, maxWindow.height / 2 - frame.getHeight()
-				//            / 2);
-				frame.setLocationRelativeTo(null);
-				
-				// Load image from resources
-				try {
-					//URL iconURL = DragAndDropFrame.class.getResource("DragAndDropFrame.png");
-					URL iconURL = TextCrypt.class.getResource("/file_locked.png");
-					if (iconURL != null) {
-						//Image icon = ImageIO.read(iconURL);
-						icon = ImageIO.read(iconURL);
-					} else {
-						System.err.println(Messages.getString("icon_failed"));
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				ClassLoader classLoader = TextCrypt.class.getClassLoader();
+				try (InputStream is = TextCrypt.class.getResourceAsStream("version.properties")) {
+					if (is != null) {
+						// Use the input stream (e.g., read properties)
+						java.util.Properties props = new java.util.Properties();
+						props.load(is);
+						AppVersion = props.getProperty("version");
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				if (icon != null) frame.setIconImage(icon);
 				
-				frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
+				try {
+					TextCrypt frame = new TextCrypt();
+					frame.pack();
+					frame.setMinimumSize(frame.getPreferredSize());
+					frame.setSize(500, 600);
+					// centre the window
+					frame.setLocationRelativeTo(null);
+					// Load image from resources
+					try {
+						//URL iconURL = DragAndDropFrame.class.getResource("DragAndDropFrame.png");
+						URL iconURL = TextCrypt.class.getResource("/file_locked.png");
+						if (iconURL != null) {
+							//Image icon = ImageIO.read(iconURL);
+							icon = ImageIO.read(iconURL);
+						} else {
+							System.err.println(Messages.getString("icon_failed"));
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					if (icon != null) frame.setIconImage(icon);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-		 }
-	  });
+		});
 	}
 
-	/**
+	/*
 	 * Initialize TextCrypt
 	 *  Check/enable BouncyCastle crypto provider. 
 	 *  Create the UI.
@@ -227,6 +214,12 @@ public class TextCrypt extends JFrame implements ActionListener {
 	public TextCrypt() {
 		try {
 			CryptUtils.checkBCProvider();
+			//System.out.println(Security.getProvider("BC"));
+			if (Security.getProvider("BC") != null) {
+				//System.out.println(Security.getProvider("BC").getVersion());
+				//	String lastElement = parts[parts.length - 1];
+				AppVersion = AppVersion + " (BC v" + Security.getProvider("BC").getVersion() + ")";
+			}
 		} catch (NoClassDefFoundError e) {
 			JOptionPane.showMessageDialog(this, Messages.getString("no_bcprov"), Messages.getString("no_bcprov_title"),
 			JOptionPane.ERROR_MESSAGE);
@@ -240,7 +233,7 @@ public class TextCrypt extends JFrame implements ActionListener {
 		}
 		keyLength = maxKeyLength;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setTitle(Messages.getString("main_title") + " - v" + AppVersion);
+		setTitle(Messages.getString("main_title") + " v" + AppVersion);
 		JPanel cp = new JPanel();
 		setContentPane(cp);
 		cp.setLayout(new BoxLayout(cp, BoxLayout.PAGE_AXIS));
